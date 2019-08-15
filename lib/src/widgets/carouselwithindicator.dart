@@ -32,6 +32,7 @@ List child = [];
 
 class CarouselWithIndicator extends StatefulWidget {
   final List<Post> posts;
+  
   CarouselWithIndicator(this.posts);
   @override
   _CarouselWithIndicatorState createState() =>
@@ -41,6 +42,7 @@ class CarouselWithIndicator extends StatefulWidget {
 class _CarouselWithIndicatorState extends State<CarouselWithIndicator> {
   int _current = 0;
   final List<Post> posts;
+  
   _CarouselWithIndicatorState({this.posts});
 
 
@@ -60,6 +62,7 @@ class _CarouselWithIndicatorState extends State<CarouselWithIndicator> {
  }
   _setImgList() {
     _initImgList();
+    print('Carousel #posts : ' + (posts.length).toString());
     for (var i = 0; i < posts.length; i++) {
       imgList.add(posts[i].featuredMedia == 0 ? 'https://picsum.photos/250?image=9' :  posts[i].featuredMediaUrl );
     }

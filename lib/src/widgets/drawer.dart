@@ -149,6 +149,9 @@ class CustomDrawerState extends State<CustomDrawer>
 
       setState(() {
         posts.addAll(newPosts);
+        var uniqPosts = posts.toSet().toList();
+        posts.clear();
+        posts = uniqPosts;
 
         //  allPosts[categories[categoryIndex].title].addAll(newPosts);
         //    posts=allPosts[categories[categoryIndex].title];
@@ -173,6 +176,9 @@ class CustomDrawerState extends State<CustomDrawer>
             bodyPosts.add(posts[i]);
           }
         }
+        var uniqCarouselPosts = carouselPosts.toSet().toList();
+        carouselPosts.clear();
+        carouselPosts = uniqCarouselPosts;
         var uniqBodyPosts = bodyPosts.toSet().toList();
         bodyPosts.clear();
         bodyPosts = uniqBodyPosts;
@@ -659,6 +665,8 @@ class CustomDrawerState extends State<CustomDrawer>
 
   @override
   Widget build(BuildContext context) {
+    print('Drawer Carousel #posts : ' + (carouselPosts.length).toString());
+    print('Drawer Body #posts : ' + (bodyPosts.length).toString());
     drawerOptions.clear();
 
     for (var i = 0; i < drawerItems.length; i++) {

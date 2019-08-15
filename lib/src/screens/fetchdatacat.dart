@@ -99,6 +99,8 @@ class _FetchDataCatState extends State<FetchDataCat> {
         _fetchDataCat(1, 1);
         displayCarousel = false;
     }
+    print('Drawer Carousel #posts : ' + (carouselPosts.length).toString());
+    print('Drawer Body #posts : ' + (bodyPosts.length).toString());
     return  Scaffold(
         // appBar: 
         // CustomAppBar(),
@@ -147,7 +149,9 @@ class _FetchDataCatState extends State<FetchDataCat> {
                         controller: _controller,
                         slivers: <Widget>[
                       SliverList(
+                        
                         delegate: SliverChildListDelegate([
+                         
                           CarouselWithIndicator(carouselPosts),
                         ]),
                       ),
