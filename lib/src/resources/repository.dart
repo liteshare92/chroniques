@@ -7,6 +7,7 @@ import '../models/post_model.dart';
 import './posts_api_provider.dart';
 import 'posts_db_provider.dart';
 
+const PER_PAGE = 20;
 class Repository {
   List<Source> sources = <Source>[
     //  postDbProvider,
@@ -27,6 +28,9 @@ class Repository {
     for (source in sources) {
       posts = await source.fetchDataCat(category, page);
       if (posts != null) {
+        if (posts.length < PER_PAGE/2)
+        continue;
+        else
         break;
       }
     }
