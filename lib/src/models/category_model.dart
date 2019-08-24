@@ -241,7 +241,8 @@ List<Category> categories = [
 ];
 
 Category findCategoryById(int id) {
-  for (var i = 0; i < categories.length; i++) {
+  // Kdr skip index 0 to avoid all cats being in 0 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+  for (var i = 1; i < categories.length; i++) {
     if (categories[i].id == id) {
       return categories[i];
     }
