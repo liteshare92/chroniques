@@ -14,6 +14,7 @@ import 'package:flutter_html/flutter_html.dart';
 import 'package:intl/date_symbol_data_local.dart';
 import 'dart:async';
 import 'dart:math';
+import 'package:flutter_widget_from_html/flutter_widget_from_html.dart';
 
 
 class SinglePost extends StatefulWidget {
@@ -142,13 +143,19 @@ class _SinglePostState extends State<SinglePost> {
                         //     post.content.rendered
                         //         .replaceAll(new RegExp(r'<[^>]*>'), ''),
                         //     style: TextStyle(color: Colors.black54))),
-                        Html(
-                            data: (post.content.rendered).toString(),
-                            defaultTextStyle: TextStyle(
-                                color: Colors.black54,
-                                //         fontFamily: 'NotoKufiArabic',
-                                fontSize: 16.0,
-                                decoration: TextDecoration.none))),
+                        // Html(
+                        //     data: (post.content.rendered).toString(),
+                        //     defaultTextStyle: TextStyle(
+                        //         color: Colors.black54,
+                        //         //         fontFamily: 'NotoKufiArabic',
+                        //         fontSize: 16.0,
+                        //         decoration: TextDecoration.none)
+                        //         )
+                        HtmlWidget(
+          (post.content.rendered).toString(),
+          webView: true,
+        ),
+                                ),
                 Divider(color: Colors.black54),
                 Row(children: [
                   Expanded(
@@ -161,7 +168,8 @@ class _SinglePostState extends State<SinglePost> {
                       onPressed: () {
                         //    print("Pressed");
                         RenderBox box = context.findRenderObject();
-                        Share.share(post.link,
+   //                     Share.share(post.link,
+                        Share.share(post.content.rendered.toString(),
                             sharePositionOrigin:
                                 box.localToGlobal(Offset.zero) & box.size);
                       },
