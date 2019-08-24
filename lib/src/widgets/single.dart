@@ -157,7 +157,8 @@ class _SinglePostState extends State<SinglePost> {
                         //         decoration: TextDecoration.none)
                         //         )
                         HtmlWidget(
-          (post.content.rendered).toString(),
+ //         (post.content.rendered).replaceAll(new RegExp(r'<!--.*-->'), '').toString(),
+          (post.content.rendered).replaceAll(new RegExp(r'<[^>]*>'), ''),
           webView: true,
         ),
                                 ),
@@ -173,8 +174,8 @@ class _SinglePostState extends State<SinglePost> {
                       onPressed: () {
                         //    print("Pressed");
                         RenderBox box = context.findRenderObject();
-   //                     Share.share(post.link,
-                        Share.share(post.content.rendered.toString(),
+                        Share.share(post.link,
+   //                     Share.share(post.content.rendered.toString(),
                             sharePositionOrigin:
                                 box.localToGlobal(Offset.zero) & box.size);
                       },
