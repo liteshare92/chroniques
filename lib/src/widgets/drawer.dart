@@ -375,7 +375,7 @@ class CustomDrawerState extends State<CustomDrawer>
 
     // NOTE: Replace with your own app ID from https://www.onesignal.com
     await OneSignal.shared
-        .init("3900ace4-ad42-4161-b9a4-17726c91ce02", iOSSettings: settings);
+        .init("6391e82b-62dd-4bbe-a807-161c46351a6c", iOSSettings: settings);
 
     OneSignal.shared
         .setInFocusDisplayType(OSNotificationDisplayType.notification);
@@ -421,7 +421,7 @@ class CustomDrawerState extends State<CustomDrawer>
     _tabController.addListener(_handleTabSelection);
     // _filter.addListener(_handleSearchSelection);
     _goFetchDataCat(_selectedDrawerIndex);
-    _scrollController.addListener(_handleScrollController);
+    //_scrollController.addListener(_handleScrollController);
     initPlatformState();
     _getPrefs();
   }
