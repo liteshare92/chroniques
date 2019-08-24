@@ -99,9 +99,14 @@ class _SinglePostState extends State<SinglePost> {
                         border: Border.all(
                             color: Colors.white70, style: BorderStyle.solid)),
                     child: Text(
-                        findCategoryById(post.categories[0]) != null
-                            ? findCategoryById(post.categories[0]).title
+                      // Kdr skip index 0 to avoid all cats being in 0 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+                        findCategoryById(post.categories[1]) != null
+                            ? findCategoryById(post.categories[1]).title
                             : 'A la Une',
+                            // findCategoryIndexById(post.categories[0]) != null
+                            // ? findCategoryIndexById(post.categories[0]).title
+                            // : 'A la Une',
+                            
                         style: TextStyle(
                           
                           fontSize: 20.0,
