@@ -155,12 +155,13 @@ class CustomDrawerState extends State<CustomDrawer>
 
         //  allPosts[categories[categoryIndex].title].addAll(newPosts);
         //    posts=allPosts[categories[categoryIndex].title];
-        if (nbPosts != posts.length) {
-          categories[categoryIndex].currentPage =
-              categories[categoryIndex].page + 1;
-        } else {
-          categories[categoryIndex].endReachedStatus = true;
-        }
+       
+        // kdr last if (nbPosts != posts.length) {
+        //   categories[categoryIndex].currentPage =
+        //       categories[categoryIndex].page + 1;
+        // } else {
+        //   categories[categoryIndex].endReachedStatus = true;
+        // }
 
         carouselPosts.clear();
         bodyPosts.clear();
@@ -593,20 +594,20 @@ class CustomDrawerState extends State<CustomDrawer>
             child: const Padding(
               padding: const EdgeInsets.only(left: 12.0),
               child: const Text(
-                'Version: ',
+                'Version: 1.0.0',
                 style: const TextStyle(fontSize: 12.0),
               ),
             ),
           ),
-          RaisedButton(
-            child: Text(
-              'drop db',
-              style: TextStyle(fontSize: 20),
-            ),
-            onPressed: () {
-              _dropDb();
-            },
-          ),
+          // RaisedButton(
+          //   child: Text(
+          //     'drop db',
+          //     style: TextStyle(fontSize: 20),
+          //   ),
+          //   onPressed: () {
+          //     _dropDb();
+          //   },
+          // ),
         ],
       ),
     );

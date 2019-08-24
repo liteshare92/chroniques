@@ -132,7 +132,7 @@ class _SinglePostState extends State<SinglePost> {
                           decoration: TextDecoration.none)),
                 ),
                 FadeInImage.assetNetwork(
-                  placeholder: 'images/placeholder.png',
+                  placeholder: 'images/chroniques_logo.png',
                   image: post.featuredMediaUrl ??
                       'https://picsum.photos/250?image=9',
                 ),

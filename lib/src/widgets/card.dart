@@ -98,7 +98,7 @@ class _PostCardState extends State<PostCard> {
                 child: post.featuredMedia == 0
                     ? new Container(width: 0, height: 0)
                     : FadeInImage.assetNetwork(
-                        placeholder: 'images/placeholder.png',
+                        placeholder: 'images/chroniques_logo.png',
                         image: post.featuredMediaUrl ??
                             'https://picsum.photos/250?image=9',
                         height: 60.0,
@@ -199,7 +199,7 @@ class ItemClick extends StatelessWidget {
                     width: 120.0,
                     height: 80.0,
                     fit: BoxFit.fill,
-                    placeholder: 'images/placeholder.png',
+                    placeholder: 'images/chroniques_logo.png',
                     // image: 'https://picsum.photos/250?image=9',
                     image: post.featuredMediaUrl ??
                         'https://picsum.photos/250?image=9',

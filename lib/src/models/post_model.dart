@@ -44,7 +44,7 @@ class Post {
       author: json["_embedded"]["author"][0]["name"],
       featuredMedia: json["featured_media"],
       featuredMediaUrl: json["_embedded"]["wp:featuredmedia"] == null
-          ? 'images/placeholder.png'
+          ? 'images/chroniques_logo.png'
           : json["_embedded"]["wp:featuredmedia"][0]["source_url"],
       link: json["link"],
       categories: new List<int>.from(json["categories"].map((x) => x)),

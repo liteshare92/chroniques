@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>944584804461-ct88ags8a3tav6i2rrephk5vtrdtb3i3.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.944584804461-ct88ags8a3tav6i2rrephk5vtrdtb3i3</string>
+	<key>API_KEY</key>
+	<string>AIzaSyBz0T0uk-dk5Npy-60k7OiFuy1P6z9XTzg</string>
+	<key>GCM_SENDER_ID</key>
+	<string>944584804461</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>sn.chroniques.chroniques</string>
+	<key>PROJECT_ID</key>
+	<string>chroniques-sn</string>
+	<key>STORAGE_BUCKET</key>
+	<string>chroniques-sn.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:944584804461:ios:60f0b3caf24b9ef3</string>
+	<key>DATABASE_URL</key>
+	<string>https://chroniques-sn.firebaseio.com</string>
+</dict>
+</plist>

@@ -7,7 +7,7 @@ import '../models/post_model.dart';
 import './posts_api_provider.dart';
 import 'posts_db_provider.dart';
 
-const PER_PAGE = 30;
+const PER_PAGE = 40;
 class Repository {
   List<Source> sources = <Source>[
     //  postDbProvider,

@@ -10,7 +10,7 @@ import 'repository.dart';
 import '../models/post_model.dart';
 import 'package:http/http.dart' show Client;
 
-const PER_PAGE = 30;
+const PER_PAGE = 40;
 const baseUrl = "http://chroniques.sn";
 //const baseUrl = "https://lemedia.sn";
 var allPosts;
