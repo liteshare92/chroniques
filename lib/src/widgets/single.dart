@@ -171,7 +171,7 @@ class _SinglePostState extends State<SinglePost> {
                         //         decoration: TextDecoration.none)
                         //         )
                        
-                                ),
+                ),
                 Divider(color: Colors.black54),
                 Row(children: [
                   Expanded(
@@ -185,7 +185,8 @@ class _SinglePostState extends State<SinglePost> {
                         //    print("Pressed");
                         RenderBox box = context.findRenderObject();
    //                     Share.share(post.link,
-                        Share.share(post.content.rendered.toString(),
+   //                     Share.share(post.content.rendered.toString(),
+                        Share.share(post.featuredMediaUrl.toString(),
                             sharePositionOrigin:
                                 box.localToGlobal(Offset.zero) & box.size);
                       },
