@@ -15,6 +15,7 @@ import 'package:intl/date_symbol_data_local.dart';
 import 'dart:async';
 import 'dart:math';
 import 'package:flutter_widget_from_html/flutter_widget_from_html.dart';
+//import 'package:sanitize_html/sanitize_html.dart' show sanitizeHtml;
 
 
 class SinglePost extends StatefulWidget {
@@ -29,7 +30,7 @@ class _SinglePostState extends State<SinglePost> {
   _SinglePostState({@required var this.post}) ;
   @override
   void initState() {
-    // TODO: implement initState
+   
     super.initState();
     initializeDateFormatting('fr_Fr');
 
@@ -42,7 +43,11 @@ class _SinglePostState extends State<SinglePost> {
 // }
 // initializeDateFormatting().then(){print("oK");};
  
- 
+   RegExp regExp = new RegExp(
+  r"^.*(youtu\.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*",
+  caseSensitive: false,
+  multiLine: false,
+);
 
   _launchURL(String url) async {
     // const url = 'https://flutter.io';
@@ -100,12 +105,13 @@ class _SinglePostState extends State<SinglePost> {
                             color: Colors.white70, style: BorderStyle.solid)),
                     child: Text(
                       // Kdr skip index 0 to avoid all cats being in 0 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+                        post.categories.length > 1 
+                        ?  (
                         findCategoryById(post.categories[1]) != null
                             ? findCategoryById(post.categories[1]).title
-                            : 'A la Une',
-                            // findCategoryIndexById(post.categories[0]) != null
-                            // ? findCategoryIndexById(post.categories[0]).title
-                            // : 'A la Une',
+                            : 'Accueil'
+                           )
+                        : 'Accueil',
                             
                         style: TextStyle(
                           
@@ -144,23 +150,27 @@ class _SinglePostState extends State<SinglePost> {
                 new Padding(
                     padding: EdgeInsets.all(16.0),
                     child:
+  //                 regExp.hasMatch(post.content.rendered  ) ?
+                     HtmlWidget( 
+ //         (post.content.rendered).replaceAll(new RegExp(r'<!--.*-->'), '').toString(),
+    //     (post.content.rendered).replaceAll(new RegExp(r'<[^pP].*?>|</[^pP]>'), '') ,
+          (post.content.rendered) ,
+          webView: true,
+        )
+       
                         // new Text(
                         //     post.content.rendered
                         //         .replaceAll(new RegExp(r'<[^>]*>'), ''),
                         //     style: TextStyle(color: Colors.black54))),
                         // Html(
-                        //     data: (post.content.rendered).toString(),
+                        //     data: "Html" + (post.content.rendered).toString(),
                         //     defaultTextStyle: TextStyle(
                         //         color: Colors.black54,
                         //         //         fontFamily: 'NotoKufiArabic',
                         //         fontSize: 16.0,
                         //         decoration: TextDecoration.none)
                         //         )
-                        HtmlWidget(
- //         (post.content.rendered).replaceAll(new RegExp(r'<!--.*-->'), '').toString(),
-          (post.content.rendered).replaceAll(new RegExp(r'<[^>]*>'), ''),
-          webView: true,
-        ),
+                       
                                 ),
                 Divider(color: Colors.black54),
                 Row(children: [
@@ -174,8 +184,8 @@ class _SinglePostState extends State<SinglePost> {
                       onPressed: () {
                         //    print("Pressed");
                         RenderBox box = context.findRenderObject();
-                        Share.share(post.link,
-   //                     Share.share(post.content.rendered.toString(),
+   //                     Share.share(post.link,
+                        Share.share(post.content.rendered.toString(),
                             sharePositionOrigin:
                                 box.localToGlobal(Offset.zero) & box.size);
                       },
