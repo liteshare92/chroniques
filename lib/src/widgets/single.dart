@@ -154,7 +154,7 @@ class _SinglePostState extends State<SinglePost> {
                      HtmlWidget( 
  //         (post.content.rendered).replaceAll(new RegExp(r'<!--.*-->'), '').toString(),
     //     (post.content.rendered).replaceAll(new RegExp(r'<[^pP].*?>|</[^pP]>'), '') ,
-          (post.content.rendered) ,
+        (post.content.rendered.replaceAll('&nbsp;', '')).replaceAll(new RegExp('<([a-zA-Z][a-zA-Z0-9]*)[^>]*>\\s*</\\1>'), ''), 
           webView: true,
         )
        
