@@ -100,7 +100,7 @@ class _PostCardState extends State<PostCard> {
                     : FadeInImage.assetNetwork(
                         placeholder: 'images/chroniques_logo.png',
                         image: post.featuredMediaUrl ??
-                            'https://picsum.photos/250?image=9',
+                            'images/chroniques_logo.png',
                         height: 60.0,
                         fit: BoxFit.cover,
                       ),

@@ -142,10 +142,14 @@ class _SinglePostState extends State<SinglePost> {
                           color: Colors.black54,
                           decoration: TextDecoration.none)),
                 ),
-                FadeInImage.assetNetwork(
-                  placeholder: 'images/chroniques_logo.png',
-                  image: post.featuredMediaUrl ??
-                      'https://picsum.photos/250?image=9',
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: post.featuredMediaUrl == null ? Container(width: 0, height: 0,) :
+                  FadeInImage.assetNetwork(
+                    placeholder: 'images/chroniques_logo.png',
+                    image: post.featuredMediaUrl ??
+                        'https://picsum.photos/250?image=9',
+                  ),
                 ),
                 new Padding(
                     padding: EdgeInsets.all(16.0),
