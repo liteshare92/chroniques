@@ -79,6 +79,7 @@ class CustomDrawerState extends State<CustomDrawer>
 
   bool isSwitched = true;
   static const String chroniquesUrl = 'http://chroniques.sn/';
+  static const String kmpdigitalUrl = 'http://kmpdigital.com/';
   static const String githubUrl = 'http://www.codesnippettalk.com';
 
   static const TextStyle linkStyle = const TextStyle(
@@ -87,6 +88,7 @@ class CustomDrawerState extends State<CustomDrawer>
   );
 
   TapGestureRecognizer _chroniquesTapRecognizer;
+  TapGestureRecognizer _kmpdigitalTapRecognizer;
   TapGestureRecognizer _githubTapRecognizer;
 
   var allPosts = new Map();
@@ -285,6 +287,23 @@ class CustomDrawerState extends State<CustomDrawer>
             )));
   }
 
+  _initPrefs() async {
+    // bool _vNotificationsPrefs = await prefs.getAllowsNotifications() ?? false;
+    // if (! _vNotificationsPrefs ) {
+    //   isSwitched = true;
+    //   _setPrefs();
+    
+    // }
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    bool _seen = (prefs.getBool('seen') ?? false);
+    if (!_seen) {
+            prefs.setBool('seen', true);
+        isSwitched = true;
+      _setPrefs();
+          }
+
+    
+  }
   _getPrefs() async {
     _vNotificationsPrefs = await prefs.getAllowsNotifications();
     isSwitched = _vNotificationsPrefs;
@@ -417,19 +436,24 @@ class CustomDrawerState extends State<CustomDrawer>
 
     _chroniquesTapRecognizer = new TapGestureRecognizer()
       ..onTap = () => _openUrl(chroniquesUrl);
+      _kmpdigitalTapRecognizer = new TapGestureRecognizer()
+      ..onTap = () => _openUrl(kmpdigitalUrl);
     _defPosts();
     _tabController = new TabController(vsync: this, length: drawerItems.length);
     _tabController.addListener(_handleTabSelection);
     // _filter.addListener(_handleSearchSelection);
     _goFetchDataCat(_selectedDrawerIndex);
     //_scrollController.addListener(_handleScrollController);
+    _initPrefs();
     initPlatformState();
+    
     _getPrefs();
   }
 
   @override
   void dispose() {
     _chroniquesTapRecognizer.dispose();
+     _kmpdigitalTapRecognizer.dispose();
     _githubTapRecognizer.dispose();
     _tabController.dispose();
     _scrollController.dispose();
@@ -555,17 +579,24 @@ class CustomDrawerState extends State<CustomDrawer>
             recognizer: _chroniquesTapRecognizer,
             style: linkStyle,
           ),
+          
           const TextSpan(
             text:
-                ' en activant les notifications vous serez averti de les toutes  '
+                '\nEn activant les notifications vous serez averti de les toutes  '
                 'informations importantes ',
           ),
-          // new TextSpan(
-          //   text: 'www.codesnippettalk.com',
-          //   recognizer: _githubTapRecognizer,
-          //   style: linkStyle,
-          // ),
+         
           const TextSpan(text: '.'),
+           const TextSpan(
+            text:
+                '\nConçue par  '
+                ,
+          ),
+           new TextSpan(
+            text: 'KmpDigital.com',
+            recognizer: _kmpdigitalTapRecognizer,
+            style: linkStyle,
+          ),
         ],
       ),
     );
@@ -587,7 +618,8 @@ class CustomDrawerState extends State<CustomDrawer>
             padding: const EdgeInsets.only(top: 0.0),
             child: new Image.asset(
               'images/chroniques-logo.png',
-              width: 32.0,
+              width: 72.0,
+              height: 32.0,
             ),
           ),
           const Expanded(
@@ -615,6 +647,7 @@ class CustomDrawerState extends State<CustomDrawer>
 
   Widget _buildNotificationStatus() {
     //   bool isSwitched = true;
+    debugPrint("Switch notification : " + isSwitched.toString());
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: <Widget>[
@@ -622,6 +655,7 @@ class CustomDrawerState extends State<CustomDrawer>
           'Notifications',
           style: TextStyle(color: Colors.black, fontFamily: 'Roboto'),
         ),
+        
         Switch(
           value: isSwitched,
           onChanged: (value) async {

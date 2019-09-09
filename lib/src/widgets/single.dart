@@ -158,8 +158,18 @@ class _SinglePostState extends State<SinglePost> {
                      HtmlWidget( 
  //         (post.content.rendered).replaceAll(new RegExp(r'<!--.*-->'), '').toString(),
     //     (post.content.rendered).replaceAll(new RegExp(r'<[^pP].*?>|</[^pP]>'), '') ,
-        (post.content.rendered.replaceAll('&nbsp;', '')).replaceAll(new RegExp('<([a-zA-Z][a-zA-Z0-9]*)[^>]*>\\s*</\\1>'), ''), 
-          webView: true,
+
+        (post.content.rendered
+        .replaceAll("""<p><!--CusAdsVi1--></p>
+<div style="font-size: 0px; height: 0px; line-height: 0px; margin: 0; padding: 0; clear: both;"></div>""", '')
+        .replaceAll('<p><!--CusAdsVi1--></p>', '')
+        .replaceAll('<!--CusAdsVi1-->', '')
+        .replaceAll("""
+<div style="font-size: 0px; height: 0px; line-height: 0px; margin: 0; padding: 0; clear: both;"></div>""", '')
+        .replaceAll('&nbsp;', ''))
+        // .replaceAll(new RegExp('<([a-zA-Z][a-zA-Z0-9]*)[^>]*>\\s*</\\1>'), ''), 
+        .replaceAll(new RegExp('<strong> *</strong>'), '')
+          ,webView: true,
         )
        
                         // new Text(
@@ -188,8 +198,8 @@ class _SinglePostState extends State<SinglePost> {
                       onPressed: () {
                         //    print("Pressed");
                         RenderBox box = context.findRenderObject();
-                      Share.share(post.link,
-   //                     Share.share(post.content.rendered.toString(),
+    //                  Share.share(post.link,
+                       Share.share(post.content.rendered.toString(),
    //                     Share.share(post.featuredMediaUrl.toString(),
                             sharePositionOrigin:
                                 box.localToGlobal(Offset.zero) & box.size);

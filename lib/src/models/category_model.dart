@@ -43,7 +43,7 @@ class Category {
 List<Category> categories = [
   Category(
     id: 458,
-    title: "ACCUEIL",
+    title: "ACTUALITÉS",
     color: Colors.red,
     icon: FontAwesomeIcons.home,
     page: 1,

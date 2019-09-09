@@ -44,4 +44,14 @@ class CustomSharedPreferences {
 
 	return prefs.setString(_kSortingOrderPrefs, value);
   }
+
+  /// ------------------------------------------------------------
+  /// Method that returns the presence of user decision to allow notifications
+  /// ------------------------------------------------------------
+  Future<bool> checkAllowsNotifications() async {
+	final SharedPreferences prefs = await SharedPreferences.getInstance();
+
+  	return prefs.containsKey(_kNotificationsPrefs) ?? false;
+  }
+
 }
