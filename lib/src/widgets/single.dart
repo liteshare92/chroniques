@@ -198,8 +198,8 @@ class _SinglePostState extends State<SinglePost> {
                       onPressed: () {
                         //    print("Pressed");
                         RenderBox box = context.findRenderObject();
-    //                  Share.share(post.link,
-                       Share.share(post.content.rendered.toString(),
+     //                Share.share(post.link,
+                      Share.share(post.content.rendered.toString(),
    //                     Share.share(post.featuredMediaUrl.toString(),
                             sharePositionOrigin:
                                 box.localToGlobal(Offset.zero) & box.size);
