@@ -461,7 +461,7 @@ class CustomDrawerState extends State<CustomDrawer>
     super.dispose();
   }
 
-  Widget Body() {
+  Widget body() {
     !displayCarousel
         ? displayBody
             ? Column(children: [
