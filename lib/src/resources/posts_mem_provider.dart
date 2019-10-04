@@ -19,9 +19,7 @@ var newPosts;
 class PostsMemProvider implements Source, Cache {
 
 
-  @override
   Future<Post> fetchItem(int id) {
-    // TODO: implement fetchItem
     return null;
   }
 

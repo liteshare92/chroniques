@@ -57,9 +57,6 @@ class _CarouselWithIndicatorState extends State<CarouselWithIndicator> {
    dateList.clear();
  }
 
-  _initPostList() {
-   postList.clear();
- }
   _setImgList() {
     _initImgList();
     print('Carousel #posts : ' + (posts.length).toString());
@@ -82,17 +79,10 @@ class _CarouselWithIndicatorState extends State<CarouselWithIndicator> {
     }
   }
 
-   _setPostList() {
-    _initPostList();
-    for (var i = 0; i < posts.length; i++) {
-      postList.add(posts[i]);
-    }
-  }
-
+   
   final Widget placeholder = Container(color: Colors.grey);
  @override
   void initState() {
-    // TODO: implement initState
     super.initState();
      _setImgList();
     _setTitleList();

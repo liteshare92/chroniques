@@ -1,8 +1,6 @@
 import '../models/post_model.dart';
 import 'package:flutter_html/flutter_html.dart';
-import 'package:webview_flutter/webview_flutter.dart';
 
-import 'WebViewContainer.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_webview_plugin/flutter_webview_plugin.dart';
 
@@ -62,19 +60,19 @@ class NSinglePost extends StatelessWidget {
   //       ));
   }
 
-  Widget _urlButton(BuildContext context, String url) {
-    return Container(
-        padding: EdgeInsets.all(20.0),
-        child: FlatButton(
-          color: Theme.of(context).primaryColor,
-          padding: const EdgeInsets.symmetric(horizontal: 50.0, vertical: 15.0),
-          child: Text(url),
-          onPressed: () => _handleURLButtonPress(context, url),
-        ));
-  }
+  // Widget _urlButton(BuildContext context, String url) {
+  //   return Container(
+  //       padding: EdgeInsets.all(20.0),
+  //       child: FlatButton(
+  //         color: Theme.of(context).primaryColor,
+  //         padding: const EdgeInsets.symmetric(horizontal: 50.0, vertical: 15.0),
+  //         child: Text(url),
+  //         onPressed: () => _handleURLButtonPress(context, url),
+  //       ));
+  // }
 
-  void _handleURLButtonPress(BuildContext context, String url) {
-    Navigator.push(context,
-        MaterialPageRoute(builder: (context) => WebViewContainer(url)));
-  }
+  // void _handleURLButtonPress(BuildContext context, String url) {
+  //   Navigator.push(context,
+  //       MaterialPageRoute(builder: (context) => WebViewContainer(url)));
+  // }
 }

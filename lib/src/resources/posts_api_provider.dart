@@ -15,9 +15,7 @@ const baseUrl = "http://chroniques.sn";
 class PostsApiProvider implements Source {
 
 
-  @override
   Future<Post> fetchItem(int id) {
-    // TODO: implement fetchItem
     return null;
   }
 

@@ -1,9 +1,6 @@
-import '../models/category_model.dart';
 import '../widgets/drawer.dart';
 
-import '../models/category_model.dart';
 import '../resources/color.dart';
-import '../screens/fetchdatacat.dart';
 import 'package:flutter/material.dart';
 import 'package:splashscreen/splashscreen.dart';
 
@@ -13,7 +10,6 @@ class CustomSplashScreen extends StatelessWidget {
   CustomSplashScreen({this.category, this.page});
   @override
   Widget build(BuildContext context) {
-    // TODO: implement build
     return new SplashScreen(
         seconds: 03,
         navigateAfterSeconds: new 

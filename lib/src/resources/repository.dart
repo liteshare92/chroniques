@@ -1,6 +1,5 @@
 import 'dart:async';
 
-import './posts_mem_provider.dart';
 
 import '../models/post_model.dart';
 

@@ -1,4 +1,3 @@
-import 'dart:convert';
 
 import 'package:flutter/services.dart';
 
@@ -18,20 +17,15 @@ import '../models/post_model.dart';
 
 import '../resources/repository.dart';
 
-import '../screens/fetchdatacat.dart';
 
 import '../resources/color.dart';
 
-import '../models/category_model.dart' as Category;
 import 'package:flutter/material.dart';
 import 'package:flutter/foundation.dart';
-import 'dart:developer';
 //import OneSignal
 import 'package:onesignal/onesignal.dart';
 import 'package:sticky_headers/sticky_headers.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:platform_aware/platform_aware.dart';
-import 'package:sqflite/sqflite.dart';
 import 'package:flutter_offline/flutter_offline.dart';
 
 class DrawerItem {
@@ -131,7 +125,6 @@ class CustomDrawerState extends State<CustomDrawer>
         isLoading = true;
       });
 
-      var nbPosts = posts.length;
       newPosts.clear();
       //ApiProvider postsApiProvider = PostsApiProvider();
       Repository repository = Repository();
@@ -238,18 +231,18 @@ class CustomDrawerState extends State<CustomDrawer>
     });
   }
 
-  _handleSearchSelection() {
-    if (_filter.text.isEmpty) {
-      setState(() {
-        _searchText = "";
-      });
-    } else {
-      setState(() {
-        _searchText = _filter.text;
-        _fetchDataSearch(_searchText, 1);
-      });
-    }
-  }
+  // _handleSearchSelection() {
+  //   if (_filter.text.isEmpty) {
+  //     setState(() {
+  //       _searchText = "";
+  //     });
+  //   } else {
+  //     setState(() {
+  //       _searchText = _filter.text;
+  //       _fetchDataSearch(_searchText, 1);
+  //     });
+  //   }
+  // }
 
   _onSubmitted(String value) {
     if (value.isEmpty) {
@@ -264,15 +257,15 @@ class CustomDrawerState extends State<CustomDrawer>
     }
   }
 
-  _handleScrollController() {
-    if (_scrollController.position.pixels ==
-        _scrollController.position.maxScrollExtent) {
-      _goFetchDataCat(_selectedDrawerIndex);
-      _scrollController.jumpTo(_scrollController.position.maxScrollExtent);
-      // _scrollController.animateTo(0.0,
-      //     curve: Curves.easeOut, duration: const Duration(milliseconds: 300));
-    }
-  }
+  // _handleScrollController() {
+  //   if (_scrollController.position.pixels ==
+  //       _scrollController.position.maxScrollExtent) {
+  //     _goFetchDataCat(_selectedDrawerIndex);
+  //     _scrollController.jumpTo(_scrollController.position.maxScrollExtent);
+  //     // _scrollController.animateTo(0.0,
+  //     //     curve: Curves.easeOut, duration: const Duration(milliseconds: 300));
+  //   }
+  // }
 
   Widget noPost() {
     return Center(
@@ -416,18 +409,18 @@ class CustomDrawerState extends State<CustomDrawer>
     });
   }
 
-  Widget _getDrawerItemWidget(int pos) {
-    if (start) {
-      start = !start;
-      return FetchDataCat(
-          category: categories[pos].id, page: categories[pos].page);
-    } else {
-      //   Navigator.of(context).pop();
-      Navigator.of(context).push(MaterialPageRoute(
-          builder: (BuildContext context) => FetchDataCat(
-              category: categories[pos].id, page: categories[pos].page)));
-    }
-  }
+  // Widget _getDrawerItemWidget(int pos) {
+  //   if (start) {
+  //     start = !start;
+  //     return FetchDataCat(
+  //         category: categories[pos].id, page: categories[pos].page);
+  //   } else {
+  //     //   Navigator.of(context).pop();
+  //     Navigator.of(context).push(MaterialPageRoute(
+  //         builder: (BuildContext context) => FetchDataCat(
+  //             category: categories[pos].id, page: categories[pos].page)));
+  //   }
+  // }
 
   @override
   void initState() {
@@ -461,59 +454,59 @@ class CustomDrawerState extends State<CustomDrawer>
     super.dispose();
   }
 
-  Widget body() {
-    !displayCarousel
-        ? displayBody
-            ? Column(children: [
-                Expanded(
-                    child: CustomScrollView(
-                        controller: _scrollController,
-                        slivers: <Widget>[
-                      SliverList(
-                        delegate: SliverChildBuilderDelegate(
-                          (BuildContext context, int index) {
-                            final item = bodyPosts[index];
-                            if (index > bodyPosts.length) return null;
-                            return ItemClick(
-                                post:
-                                    item); // you can add your unavailable item here
-                          },
-                          //       childCount: bodyPosts.length,
-                        ),
-                      )
-                    ]))
-              ])
-            : noPost()
-        : Column(children: [
-            Expanded(
-                child: CustomScrollView(
-                    controller: _scrollController,
-                    reverse: true,
-                  shrinkWrap: true,
-                    slivers: <Widget>[
-                  SliverList(
-                    delegate: SliverChildListDelegate([
-                      CarouselWithIndicator(carouselPosts),
-                    ]),
-                  ),
-                  displayBody
-                      ? SliverList(
-                          delegate: SliverChildBuilderDelegate(
-                            (BuildContext context, int index) {
-                              if (index > bodyPosts.length) return null;
-                              final item = bodyPosts[index];
+  // Widget body() {
+  //   !displayCarousel
+  //       ? displayBody
+  //           ? Column(children: [
+  //               Expanded(
+  //                   child: CustomScrollView(
+  //                       controller: _scrollController,
+  //                       slivers: <Widget>[
+  //                     SliverList(
+  //                       delegate: SliverChildBuilderDelegate(
+  //                         (BuildContext context, int index) {
+  //                           final item = bodyPosts[index];
+  //                           if (index > bodyPosts.length) return null;
+  //                           return ItemClick(
+  //                               post:
+  //                                   item); // you can add your unavailable item here
+  //                         },
+  //                         //       childCount: bodyPosts.length,
+  //                       ),
+  //                     )
+  //                   ]))
+  //             ])
+  //           : noPost()
+  //       : Column(children: [
+  //           Expanded(
+  //               child: CustomScrollView(
+  //                   controller: _scrollController,
+  //                   reverse: true,
+  //                 shrinkWrap: true,
+  //                   slivers: <Widget>[
+  //                 SliverList(
+  //                   delegate: SliverChildListDelegate([
+  //                     CarouselWithIndicator(carouselPosts),
+  //                   ]),
+  //                 ),
+  //                 displayBody
+  //                     ? SliverList(
+  //                         delegate: SliverChildBuilderDelegate(
+  //                           (BuildContext context, int index) {
+  //                             if (index > bodyPosts.length) return null;
+  //                             final item = bodyPosts[index];
                               
-                              return ItemClick(
-                                  post:
-                                      item); // you can add your unavailable item here
-                            },
-                            //                  childCount: bodyPosts.length,
-                          ),
-                        )
-                      : noPost()
-                ]))
-          ]);
-  }
+  //                             return ItemClick(
+  //                                 post:
+  //                                     item); // you can add your unavailable item here
+  //                           },
+  //                           //                  childCount: bodyPosts.length,
+  //                         ),
+  //                       )
+  //                     : noPost()
+  //               ]))
+  //         ]);
+  // }
 
   _onSelectItem(int index) {
     setState(() {
@@ -602,12 +595,12 @@ class CustomDrawerState extends State<CustomDrawer>
     );
   }
 
-  void _dropDb() async {
-    // Assuming that the number of rows is the id for the last row.
+  // void _dropDb() async {
+  //   // Assuming that the number of rows is the id for the last row.
 
-    var response = await postsDbProvider.deleteDb();
-    print('Db deleted : ' + response.toString());
-  }
+  //   var response = await postsDbProvider.deleteDb();
+  //   print('Db deleted : ' + response.toString());
+  // }
 
   Widget _buildLogoAttribution() {
     return new Padding(

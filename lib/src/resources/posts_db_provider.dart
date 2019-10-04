@@ -8,8 +8,6 @@ import 'repository.dart';
 import 'package:path/path.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:sqflite/sqflite.dart';
-import 'package:queries/collections.dart';
-import 'package:queries/queries.dart';
 
 int _mypage$count = 1;
 
@@ -109,7 +107,6 @@ class PostsDbProvider implements Source, Cache {
 
   @override
   Future<List<Post>> fetchDataSearch(String searchText, int page) {
-    // TODO: implement fetchDataSearch
     return null;
   }
 
@@ -162,7 +159,6 @@ class PostsDbProvider implements Source, Cache {
   }
 
   Future<int> insertOrReplacePost(Post post) async {
-    Database db = await instance.database;
 
     int rowcount = await postsDbProvider.updatePost(post);
     if (rowcount == 0) {
@@ -182,7 +178,6 @@ class PostsDbProvider implements Source, Cache {
   PostsApiProvider postApiProvider = PostsApiProvider();
 
   Future<bool> apiRead() async {
-    Database db = await instance.database;
     var page = _mypage$count++;
     print('apiRead #page : ' + page.toString());
     var posts = await postApiProvider.fetchDataCat(1, page);

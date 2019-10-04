@@ -13,7 +13,6 @@ class CustomAppBar extends StatefulWidget implements PreferredSizeWidget {
   CustomAppBarState createState() => CustomAppBarState();
 
   @override
-  // TODO: implement preferredSize
   Size get preferredSize => Size.fromHeight(kToolbarHeight + 40.0);
 }
 

@@ -1,8 +1,6 @@
 import '../src//screens/splashscreen.dart';
 
-import '../src/widgets/drawer.dart';
 
-import '../src/screens/display_data.dart';
 import 'package:flutter/material.dart';
 
 class App  extends StatefulWidget {

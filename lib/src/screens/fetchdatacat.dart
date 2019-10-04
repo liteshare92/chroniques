@@ -1,5 +1,3 @@
-import 'dart:convert';
-
 import '../models/category_model.dart';
 import '../resources/color.dart';
 
@@ -10,10 +8,8 @@ import '../resources/repository.dart';
 import '../widgets/carouselwithindicator.dart';
 import 'package:flutter/material.dart';
 import '../models/post_model.dart';
-import '../resources/posts_api_provider.dart';
 import '../widgets/card.dart';
 import 'package:flutter/foundation.dart';
-import 'package:intl/date_symbol_data_local.dart';
 
 _FetchDataCatState globalState = _FetchDataCatState( categories[0].id,  categories[0].page);
 

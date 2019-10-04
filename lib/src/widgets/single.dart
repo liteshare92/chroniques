@@ -4,16 +4,10 @@ import '../models/category_model.dart';
 import '../resources/color.dart';
 import 'package:flutter/material.dart';
 import '../models/post_model.dart';
-import 'package:transparent_image/transparent_image.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:intl/intl.dart';
 import 'package:share/share.dart';
-import 'package:flat_icons_flutter/flat_icons_flutter.dart';
-import 'package:url_launcher/url_launcher.dart';
 import 'package:flutter_html/flutter_html.dart';
 import 'package:intl/date_symbol_data_local.dart';
-import 'dart:async';
-import 'dart:math';
 import 'package:flutter_widget_from_html/flutter_widget_from_html.dart';
 //import 'package:sanitize_html/sanitize_html.dart' show sanitizeHtml;
 
@@ -49,14 +43,14 @@ class _SinglePostState extends State<SinglePost> {
   multiLine: false,
 );
 
-  _launchURL(String url) async {
-    // const url = 'https://flutter.io';
-    if (await canLaunch(url)) {
-      await launch(url);
-    } else {
-      throw 'Could not launch $url';
-    }
-  }
+  // _launchURL(String url) async {
+  //   // const url = 'https://flutter.io';
+  //   if (await canLaunch(url)) {
+  //     await launch(url);
+  //   } else {
+  //     throw 'Could not launch $url';
+  //   }
+  // }
 
   @override
   Widget build(BuildContext context) {
