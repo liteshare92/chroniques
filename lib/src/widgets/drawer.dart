@@ -98,8 +98,8 @@ class CustomDrawerState extends State<CustomDrawer>
   String searchText = "";
   bool _searchOnProgress = false;
 
-  String _debugLabelString = "";
-  bool _enableConsentButton = false;
+  // String _debugLabelString = "";
+  // bool _enableConsentButton = false;
 
   // CHANGE THIS parameter to true if you want to test GDPR privacy consent
   bool _requireConsent = false;
@@ -340,8 +340,8 @@ class CustomDrawerState extends State<CustomDrawer>
 
     OneSignal.shared.setNotificationReceivedHandler((notification) {
       this.setState(() {
-        _debugLabelString =
-            "Received notification: \n${notification.jsonRepresentation().replaceAll("\\n", "\n")}";
+        // _debugLabelString =
+        //     "Received notification: \n${notification.jsonRepresentation().replaceAll("\\n", "\n")}";
       });
     });
 
@@ -393,7 +393,7 @@ class CustomDrawerState extends State<CustomDrawer>
     OneSignal.shared
         .setInFocusDisplayType(OSNotificationDisplayType.notification);
 
-    bool requiresConsent = await OneSignal.shared.requiresUserPrivacyConsent();
+    // bool requiresConsent = await OneSignal.shared.requiresUserPrivacyConsent();
 
     var status = await OneSignal.shared.getPermissionSubscriptionState();
 
@@ -405,7 +405,7 @@ class CustomDrawerState extends State<CustomDrawer>
       isSwitched = false;
     }
     this.setState(() {
-      _enableConsentButton = requiresConsent;
+      // _enableConsentButton = requiresConsent;
     });
   }
 
